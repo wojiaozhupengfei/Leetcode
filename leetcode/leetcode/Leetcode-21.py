@@ -35,9 +35,25 @@ class Solution:
         if cur2 != None: cur.next = cur2
         return h.next
 
+class ListNode:
+    def __int__(self, x):
+        self.value = x
+        self.next = None
 
-l1 = ListNode(1)
-l2 = ListNode(2)
-a = Solution()
-a.mergeTwoLists(l1, l2)
-print(a)
+class Sultion:
+    def mergeTwoList(self, l1, l2):
+        h = ListNode(-1)
+        cur = h
+        cur1 = l1
+        cur2 = l2
+        while cur1 and cur2:
+            if cur1 <= cur2:
+                cur.next = cur1
+                cur1 = cur1.next
+            else:
+                cur.next = cur2
+                cur2 = cur2.next
+            cur = cur.next
+        if cur1 != None: cur.next = cur1
+        if cur1 != None: cur.next = cur2
+        return h.next
