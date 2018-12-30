@@ -14,6 +14,7 @@
 #找出的是最大的，然后剩下的再来一次两两比较，第二次大循环找出次大的，以此类推
 
 import time
+import numpy as np
 
 #构造一个计算函数运行时间的装饰器，对比优化后函数的运行时间提高了多少
 def timecout():
@@ -36,16 +37,17 @@ def bubbSort(list):
 			if list[j] > list[j+1]:
 				list[j], list[j+1] = list[j+1], list[j]
 	return list
-list = [2,4, 1, 5, 7, 3, 9]
-list_new = bubbSort(list)
-print(list_new)
+# list = np.random.randint(1, 100000, 10000)
+# # list = [2,4, 1, 5, 7, 3, 9]
+# list_new = bubbSort(list)
+# print(list_new)
 
 #优化思路：可以调试上面代码发现，如果内循环中两两比较没有交换位置的这个过程了，那么就说明数组已经排好了，就可以结束后面的不必要循环了
 @timecout()
 def bubbSort_new(list):
 	size = len(list)
-	NoRev = False
 	for i in range(size-1, 0, -1):
+		NoRev = True
 		for j in range(0, i):
 			if list[j] > list[j+1]:
 				list[j], list[j+1] = list[j+1], list[j]
@@ -53,6 +55,6 @@ def bubbSort_new(list):
 		if NoRev == True:
 			break
 	return list
-list = [2,4, 1, 5, 7, 3, 9]
-list_new1 = bubbSort_new(list)
+list_s = [2,4, 1, 5, 7, 3, 9]
+list_new1 = bubbSort_new(list_s)
 print(list_new1)
